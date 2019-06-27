@@ -33,18 +33,19 @@ function (_Component) {
   _createClass(Cron, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      if (!this.props.value || this.props.value.split(' ').length !== 7) {
-        this.state.value = ['0', '0', '0', '*', '*', '*', '*'];
+      if (!this.props.value || this.props.value.split(' ').length !== 6) {
+        this.state.value = ['0', '0', '0', '*', '*', '*'];
         this.state.selectedTab = tabs[0];
       } else {
-        this.state.value = this.props.value.split(' ');
+        this.state.value = this.props.value.replace(/,/g, '!').split(' ');
+        ;
         var val = this.state.value;
 
         if (val[1].search('/') !== -1 && val[2] == '*' && val[3] == '1/1') {
           this.state.selectedTab = tabs[0];
         } else if (val[3] == '1/1') {
           this.state.selectedTab = tabs[1];
-        } else if (val[3].search('/') !== -1 || val[5] == 'MON-FRI') {
+        } else if (val[3].search('/') !== -1 || val[5] == '1-5') {
           this.state.selectedTab = tabs[2];
         } else if (val[3] === '?') {
           this.state.selectedTab = tabs[3];
@@ -60,7 +61,7 @@ function (_Component) {
     value: function tabChanged(tab) {
       this.setState({
         selectedTab: tab,
-        value: ['0', '0', '0', '*', '*', '*', '*']
+        value: ['0', '0', '0', '*', '*', '*']
       });
     }
   }, {
@@ -70,6 +71,7 @@ function (_Component) {
 
       return tabs.map(function (d) {
         return React.createElement("li", {
+          key: d,
           className: _this2.state.selectedTab === d ? 'active' : ''
         }, React.createElement("a", {
           onClick: _this2.tabChanged.bind(_this2, d)
@@ -87,9 +89,9 @@ function (_Component) {
         });
       } else {
         this.setState({
-          value: ['0', '0', '0', '*', '*', '*', '*']
+          value: ['0', '0', '0', '*', '*', '*']
         });
-        val = ['0', '0', '0', '*', '*', '*', '*'];
+        val = ['0', '0', '0', '*', '*', '*'];
       }
 
       newVal = val.toString().replace(/,/g, ' ');

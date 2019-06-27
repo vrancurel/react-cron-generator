@@ -48,7 +48,7 @@ function (_Component) {
     key: "onDayChange",
     value: function onDayChange(e) {
       if (parseInt(e.target.value) <= 31 || e.target.value == "") {
-        var val = ['0', this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0' : this.state.value[2], this.state.value[3], '1/1', '?', '*'];
+        var val = ['0', this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0' : this.state.value[2], this.state.value[3], '1/1', '?'];
         val[3] = "".concat(e.target.value);
         this.props.onChange(val);
       }
@@ -57,7 +57,7 @@ function (_Component) {
     key: "onLastDayChange",
     value: function onLastDayChange(e) {
       if (parseInt(e.target.value) <= 31 || e.target.value == "") {
-        var val = ['0', this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0' : this.state.value[2], this.state.value[3], '1/1', '?', '*'];
+        var val = ['0', this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0' : this.state.value[2], this.state.value[3], '1/1', '?'];
         val[3] = "L-".concat(e.target.value);
         this.props.onChange(val);
       }
@@ -93,7 +93,7 @@ function (_Component) {
             every: e.target.value
           });
 
-          _this2.props.onChange(['0', _this2.state.value[1] === '*' ? '0' : _this2.state.value[1], _this2.state.value[2] === '*' ? '0' : _this2.state.value[2], '1', '1/1', '?', '*']);
+          _this2.props.onChange(['0', _this2.state.value[1] === '*' ? '0' : _this2.state.value[1], _this2.state.value[2] === '*' ? '0' : _this2.state.value[2], '1', '1/1', '?']);
         },
         value: "1",
         name: "MonthlyRadio",
@@ -102,53 +102,7 @@ function (_Component) {
         type: "number",
         value: this.state.value[3],
         onChange: this.onDayChange
-      }), "\xA0of every month(s)"), React.createElement("div", {
-        className: "well well-small"
-      }, React.createElement("input", {
-        onChange: function onChange(e) {
-          _this2.setState({
-            every: e.target.value
-          });
-
-          _this2.props.onChange(['0', _this2.state.value[1] === '*' ? '0' : _this2.state.value[1], _this2.state.value[2] === '*' ? '0' : _this2.state.value[2], 'L', '*', '?', '*']);
-        },
-        type: "radio",
-        value: "2",
-        name: "DailyRadio",
-        checked: this.state.every === "2" ? true : false
-      }), "\xA0 Last day of every month \xA0"), React.createElement("div", {
-        className: "well well-small"
-      }, React.createElement("input", {
-        onChange: function onChange(e) {
-          _this2.setState({
-            every: e.target.value
-          });
-
-          _this2.props.onChange(['0', _this2.state.value[1] === '*' ? '0' : _this2.state.value[1], _this2.state.value[2] === '*' ? '0' : _this2.state.value[2], 'LW', '*', '?', '*']);
-        },
-        type: "radio",
-        value: "3",
-        name: "DailyRadio",
-        checked: this.state.every === "3" ? true : false
-      }), "\xA0 On the last weekday of every month \xA0"), React.createElement("div", {
-        className: "well well-small"
-      }, React.createElement("input", {
-        type: "radio",
-        onChange: function onChange(e) {
-          _this2.setState({
-            every: e.target.value
-          });
-
-          _this2.props.onChange(['0', _this2.state.value[1] === '*' ? '0' : _this2.state.value[1], _this2.state.value[2] === '*' ? '0' : _this2.state.value[2], "L-".concat(0), '*', '?', '*']);
-        },
-        value: "4",
-        name: "MonthlyRadio",
-        checked: this.state.every === "4" ? true : false
-      }), React.createElement("input", {
-        type: "number",
-        value: this.state.value[3].split('-')[1],
-        onChange: this.onLastDayChange
-      }), "\xA0day(s) before the end of the month"), "\xA0 Start time \xA0", React.createElement("select", {
+      }), "\xA0of every month(s)"), "\xA0 Start time \xA0", React.createElement("select", {
         className: "hours",
         onChange: this.onAtHourChange,
         value: this.state.value[2]

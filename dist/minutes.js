@@ -24,8 +24,8 @@ function (_Component) {
     key: "onChange",
     value: function onChange(e) {
       if (e.target.value < 60) {
-        var val = ['0', '*', '*', '*', '*', '?', '*'];
-        val[1] = "0/".concat(e.target.value);
+        var val = ['0', '*', '*', '*', '*', '?'];
+        val[1] = "*/".concat(e.target.value);
         this.props.onChange(val);
       }
     }

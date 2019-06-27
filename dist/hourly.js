@@ -37,8 +37,8 @@ function (_Component) {
     key: "onHourChange",
     value: function onHourChange(e) {
       if (this.state.every) {
-        var val = ['0', '0', '*', '*', '*', '?', '*'];
-        val[2] = "0/".concat(e.target.value);
+        var val = ['0', '0', '*', '*', '*', '?'];
+        val[2] = "*/".concat(e.target.value);
         val[3] = '1/1';
         this.props.onChange(val);
       }
@@ -46,7 +46,7 @@ function (_Component) {
   }, {
     key: "onAtHourChange",
     value: function onAtHourChange(e) {
-      var val = ['0', this.state.value[1], '*', '*', '*', '?', '*'];
+      var val = ['0', this.state.value[1], '*', '*', '*', '?'];
       val[2] = "".concat(e.target.value);
       val[3] = '1/1';
       this.props.onChange(val);
@@ -54,7 +54,7 @@ function (_Component) {
   }, {
     key: "onAtMinuteChange",
     value: function onAtMinuteChange(e) {
-      var val = ['0', '*', this.state.value[2], '*', '*', '?', '*'];
+      var val = ['0', '*', this.state.value[2], '*', '*', '?'];
       val[1] = "".concat(e.target.value);
       val[3] = '1/1';
       this.props.onChange(val);
@@ -123,6 +123,7 @@ function (_Component) {
 
       for (var i = 0; i < 24; i++) {
         hours.push(React.createElement("option", {
+          key: i,
           value: i < 10 ? "0".concat(i) : i
         }, i < 10 ? "0".concat(i) : i));
       }
@@ -136,6 +137,7 @@ function (_Component) {
 
       for (var i = 0; i < 60; i++) {
         minutes.push(React.createElement("option", {
+          key: i,
           value: i < 10 ? "0".concat(i) : i
         }, i < 10 ? "0".concat(i) : i));
       }

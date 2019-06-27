@@ -10,8 +10,8 @@ export default class Cron extends Component {
     }
     onChange(e) {
         if(e.target.value <60) {
-            let val = ['0','*','*','*','*','?','*']
-            val[1] = `0/${e.target.value}`;
+            let val = ['0','*','*','*','*','?']
+            val[1] = `*/${e.target.value}`;
             this.props.onChange(val)
         } 
     }

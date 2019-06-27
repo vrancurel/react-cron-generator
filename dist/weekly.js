@@ -29,6 +29,7 @@ function (_Component) {
     key: "onAtHourChange",
     value: function onAtHourChange(e) {
       var val = this.state.value;
+      val[0] = '0';
       val[2] = "".concat(e.target.value);
       this.props.onChange(val);
     }
@@ -36,6 +37,7 @@ function (_Component) {
     key: "onAtMinuteChange",
     value: function onAtMinuteChange(e) {
       var val = this.state.value;
+      val[0] = '0';
       val[1] = "".concat(e.target.value);
       this.props.onChange(val);
     }
@@ -43,13 +45,14 @@ function (_Component) {
     key: "onCheck",
     value: function onCheck(e) {
       var val = this.state.value;
+      val[0] = '0';
 
       if (e.target.checked) {
         val[2] = "".concat(val[2]).split('/').length > 1 ? '0' : val[2].toString();
         val[3] = '?';
         val[4] = '*';
 
-        if (val[5] === '*' || val[5] === '?' || val[5] === 'MON-FRI') {
+        if (val[5] === '*' || val[5] === '?' || val[5] === '1-5') {
           val[5] = e.target.value;
         } else {
           val[5] = val[5] + '!' + e.target.value;
@@ -81,43 +84,43 @@ function (_Component) {
         className: "text_align_left"
       }, React.createElement("input", {
         type: "checkbox",
-        value: "MON",
+        value: "1",
         onChange: this.onCheck,
-        checked: this.state.value[5].search('MON') !== -1 ? true : false
+        checked: this.state.value[5].search('1') !== -1 ? true : false
       }), "\xA0Monday", React.createElement("br", null), React.createElement("input", {
         type: "checkbox",
-        value: "WED",
+        value: "3",
         onChange: this.onCheck,
-        checked: this.state.value[5].search('WED') !== -1 ? true : false
+        checked: this.state.value[5].search('3') !== -1 ? true : false
       }), "\xA0Wednesday", React.createElement("br", null), React.createElement("input", {
         type: "checkbox",
-        value: "FRI",
+        value: "5",
         onChange: this.onCheck,
-        checked: this.state.value[5].search('FRI') !== -1 ? true : false
+        checked: this.state.value[5].search('5') !== -1 ? true : false
       }), "\xA0Friday", React.createElement("br", null), React.createElement("input", {
         type: "checkbox",
-        value: "SUN",
+        value: "0",
         onChange: this.onCheck,
-        checked: this.state.value[5].search('SUN') !== -1 ? true : false
+        checked: this.state.value[5].search('0') !== -1 ? true : false
       }), "\xA0Sunday")), React.createElement("div", {
         className: "span6 col-sm-6"
       }, React.createElement("div", {
         className: "text_align_left"
       }, React.createElement("input", {
         type: "checkbox",
-        value: "TUE",
+        value: "2",
         onChange: this.onCheck,
-        checked: this.state.value[5].search('TUE') !== -1 ? true : false
+        checked: this.state.value[5].search('2') !== -1 ? true : false
       }), "\xA0Tuesday", React.createElement("br", null), React.createElement("input", {
         type: "checkbox",
-        value: "THU",
+        value: "4",
         onChange: this.onCheck,
-        checked: this.state.value[5].search('THU') !== -1 ? true : false
+        checked: this.state.value[5].search('4') !== -1 ? true : false
       }), "\xA0Thursday", React.createElement("br", null), React.createElement("input", {
         type: "checkbox",
-        value: "SAT",
+        value: "6",
         onChange: this.onCheck,
-        checked: this.state.value[5].search('SAT') !== -1 ? true : false
+        checked: this.state.value[5].search('6') !== -1 ? true : false
       }), "\xA0Saturday"), React.createElement("br", null), React.createElement("br", null))), "\xA0 Start time \xA0", React.createElement("select", {
         className: "hours",
         onChange: this.onAtHourChange,

@@ -17,8 +17,8 @@ export default class Cron extends Component {
         };
     }
     componentWillMount() {
-        if(!this.props.value || this.props.value.split(' ').length !== 7 ) {
-            this.state.value = ['0','0','0','*','*','*','*']
+        if(!this.props.value || this.props.value.split(' ').length !== 6 ) {
+            this.state.value = ['0','0','0','*','*','*']
             this.state.selectedTab = tabs[0]
         } else  {
             this.state.value = this.props.value.replace(/,/g, '!').split(' '); ;
@@ -27,7 +27,7 @@ export default class Cron extends Component {
                 this.state.selectedTab = tabs[0];
             } else if((val[3] == '1/1')) {
                 this.state.selectedTab = tabs[1];
-            } else if((val[3].search('/') !== -1) || (val[5] == 'MON-FRI')) {
+            } else if((val[3].search('/') !== -1) || (val[5] == '1-5')) {
                 this.state.selectedTab = tabs[2];
             } else if (val[3] === '?') {
                 this.state.selectedTab = tabs[3];
@@ -43,11 +43,11 @@ export default class Cron extends Component {
     }
 
     tabChanged(tab) {
-        this.setState({selectedTab:tab,value:['0','0','0','*','*','*','*']}); 
+        this.setState({selectedTab:tab,value:['0','0','0','*','*','*']}); 
     }
     getHeaders() {
         return tabs.map(d => {  
-            return <li className={this.state.selectedTab === d ? 'active' : ''}><a onClick={this.tabChanged.bind(this,d)}>{d}</a></li>
+            return <li key={d} className={this.state.selectedTab === d ? 'active' : ''}><a onClick={this.tabChanged.bind(this,d)}>{d}</a></li>
         })
     }
     onValueChange(val) {
@@ -55,8 +55,8 @@ export default class Cron extends Component {
         if(val && val.length) {
             this.setState({value:val})
         } else { 
-            this.setState({value:['0','0','0','*','*','*','*']})
-            val = ['0','0','0','*','*','*','*'];
+            this.setState({value:['0','0','0','*','*','*']})
+            val = ['0','0','0','*','*','*'];
         }
         newVal = val.toString().replace(/,/g,' ')
         newVal = newVal.replace(/!/g, ',')

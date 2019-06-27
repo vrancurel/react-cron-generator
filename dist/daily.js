@@ -41,7 +41,7 @@ function (_Component) {
   }, {
     key: "onDayChange",
     value: function onDayChange(e) {
-      var val = ['0', this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0' : this.state.value[2], '*', '*', '?', '*'];
+      var val = ['0', this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0' : this.state.value[2], '*', '*', '?'];
       val[3] = "1/".concat(e.target.value);
       this.props.onChange(val);
     }
@@ -94,7 +94,7 @@ function (_Component) {
             every: false
           });
 
-          _this2.props.onChange(['0', _this2.state.value[1], _this2.state.value[2], '?', '*', 'MON-FRI', '*']);
+          _this2.props.onChange(['0', _this2.state.value[1], _this2.state.value[2], '?', '*', '1-5']);
         },
         type: "radio",
         value: "2",

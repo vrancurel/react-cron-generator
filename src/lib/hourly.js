@@ -19,20 +19,20 @@ export default class Cron extends Component {
     }
     onHourChange(e) {
         if(this.state.every) {
-            let val = ['0','0','*','*','*','?','*'];
-            val[2] = `0/${e.target.value}`;
+            let val = ['0','0','*','*','*','?'];
+            val[2] = `*/${e.target.value}`;
             val[3] = '1/1'
             this.props.onChange(val)
         } 
     }
     onAtHourChange(e) {
-        let val = ['0',this.state.value[1],'*','*','*','?','*']
+        let val = ['0',this.state.value[1],'*','*','*','?']
         val[2] = `${e.target.value}`;
         val[3] = '1/1'
         this.props.onChange(val)
     }
     onAtMinuteChange(e) {
-        let val = ['0','*',this.state.value[2],'*','*','?','*']
+        let val = ['0','*',this.state.value[2],'*','*','?']
         val[1] = `${e.target.value}`;
         val[3] = '1/1'
         this.props.onChange(val)
@@ -71,14 +71,14 @@ export default class Cron extends Component {
     getHours() {
         let hours = []
         for(let i = 0 ; i<24 ; i++) {
-            hours.push(<option value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
+            hours.push(<option key={i} value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
         }
         return hours;
     }
     getMinutes() {
         let minutes = []
         for(let i = 0 ; i<60 ; i++) {
-            minutes.push(<option value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
+            minutes.push(<option key={i} value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
         }
         return minutes;
     }

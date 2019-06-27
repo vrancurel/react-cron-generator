@@ -21,7 +21,7 @@ export default class Cron extends Component {
         }
     }
     onDayChange(e) {
-        let val = ['0',this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0': this.state.value[2],'*','*','?','*'];
+        let val = ['0',this.state.value[1] === '*' ? '0' : this.state.value[1], this.state.value[2] === '*' ? '0': this.state.value[2],'*','*','?'];
         val[3] = `1/${e.target.value}`;
         this.props.onChange(val)
     }
@@ -46,7 +46,7 @@ export default class Cron extends Component {
                         &nbsp; day(s)
                     </div>
                     <div className="well well-small">
-                        <input onClick={(e) => {this.setState({every:false}); this.props.onChange(['0',this.state.value[1], this.state.value[2],'?','*', 'MON-FRI','*'])}} type="radio" value="2" name="DailyRadio" checked={this.state.every ? false : true}/>
+                        <input onClick={(e) => {this.setState({every:false}); this.props.onChange(['0',this.state.value[1], this.state.value[2],'?','*', '1-5'])}} type="radio" value="2" name="DailyRadio" checked={this.state.every ? false : true}/>
                         &nbsp; Every week day &nbsp;
                     </div>
                     &nbsp; Start time &nbsp;
